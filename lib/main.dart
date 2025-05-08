@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gw_hub/screens/home/home.screen.dart';
 import 'package:gw_hub/ui/colors.dart';
 
 void main() {
@@ -11,31 +12,32 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(colorScheme: const ColorScheme(
-        brightness: Brightness.light, primary: redPrimary, onPrimary: whiteTypography, 
-        secondary: blackSecondary, onSecondary: whiteTypography,
-        error: error, onError: whiteTypography,
-        surface: widgetBackground, onSurface: blackTypography),
-        appBarTheme: const AppBarTheme(
-          iconTheme: IconThemeData(color: whiteTypography),
-          backgroundColor: redPrimary,
-          titleTextStyle: TextStyle(color: whiteTypography, fontSize: 24, fontWeight: FontWeight.w500)
-        )
-        ),
-      home:  Scaffold(
-        appBar: AppBar(
-          title: const Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text('GW-HUB'),
-              Icon(Icons.menu)
-            ],
-          ),
-        ),
-        body:const  Center(
-          child: Text('GW HUB! :)'),
-        ),
-      ),
-    );
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+            colorScheme: const ColorScheme(
+              brightness: Brightness.light,
+              primary: redPrimary,
+              onPrimary: whiteTypography,
+              secondary: blackSecondary,
+              onSecondary: whiteTypography,
+              error: error,
+              onError: whiteTypography,
+              surface: widgetBackground,
+              onSurface: blackTypography,
+            ),
+            appBarTheme: const AppBarTheme(
+              iconTheme: IconThemeData(color: whiteTypography),
+              backgroundColor: redPrimary,
+              toolbarHeight: 76,
+              titleTextStyle: TextStyle(
+                color: whiteTypography,
+                fontSize: 24,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+            bottomAppBarTheme: const BottomAppBarTheme(
+                color: widgetBackground, padding: EdgeInsets.all(0))),
+        home: HomeScreen() //const LoginScreen(),
+        );
   }
 }
