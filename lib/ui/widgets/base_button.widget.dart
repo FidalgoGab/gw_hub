@@ -29,6 +29,8 @@ class BaseButton extends StatelessWidget {
         style: TextStyle(
           fontSize: 18,
           color: contained == false ? blackTypography : whiteTypography,
+          decoration: contained == false ? TextDecoration.underline : null,
+          decorationColor: contained == false ? blackTypography : null,
         ),
       ),
     );

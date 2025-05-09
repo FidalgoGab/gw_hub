@@ -24,7 +24,7 @@ class BottomBarNavigator {
                 child: Container(
                   padding: const EdgeInsets.all(4),
                   child: Icon(
-                    currentTab == 0 ? Icons.grid_on : Icons.grid_on_outlined,
+                    currentTab == 0 ? Icons.window : Icons.window_outlined,
                     size: currentTab == 0 ? 32 : 28,
                     color: redPrimary,
                   ),

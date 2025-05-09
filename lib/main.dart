@@ -14,29 +14,30 @@ class MainApp extends StatelessWidget {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
-            colorScheme: const ColorScheme(
-              brightness: Brightness.light,
-              primary: redPrimary,
-              onPrimary: whiteTypography,
-              secondary: blackSecondary,
-              onSecondary: whiteTypography,
-              error: error,
-              onError: whiteTypography,
-              surface: widgetBackground,
-              onSurface: blackTypography,
+          colorScheme: const ColorScheme(
+            brightness: Brightness.light,
+            primary: redPrimary,
+            onPrimary: whiteTypography,
+            secondary: blackSecondary,
+            onSecondary: whiteTypography,
+            error: error,
+            onError: whiteTypography,
+            surface: widgetBackground,
+            onSurface: blackTypography,
+          ),
+          appBarTheme: AppBarTheme(
+            iconTheme: const IconThemeData(color: whiteTypography),
+            backgroundColor: redPrimary.withOpacity(0.8),
+            toolbarHeight: 76,
+            titleTextStyle: const TextStyle(
+              color: whiteTypography,
+              fontSize: 20,
+              fontWeight: FontWeight.w500,
             ),
-            appBarTheme: const AppBarTheme(
-              iconTheme: IconThemeData(color: whiteTypography),
-              backgroundColor: redPrimary,
-              toolbarHeight: 76,
-              titleTextStyle: TextStyle(
-                color: whiteTypography,
-                fontSize: 24,
-                fontWeight: FontWeight.w500,
-              ),
-            ),
-            bottomAppBarTheme: const BottomAppBarTheme(
-                color: widgetBackground, padding: EdgeInsets.all(0))),
+          ),
+          bottomAppBarTheme: const BottomAppBarTheme(
+              color: widgetBackground, padding: EdgeInsets.all(0)),
+        ),
         home: HomeScreen() //const LoginScreen(),
         );
   }
