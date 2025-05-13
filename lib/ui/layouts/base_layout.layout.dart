@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gw_hub/screens/chat/chat.screen.dart';
 import 'package:gw_hub/screens/devices/devices.screen.dart';
 import 'package:gw_hub/screens/home/home.screen.dart';
 import 'package:gw_hub/screens/profile/profile.screen.dart';
@@ -42,28 +43,32 @@ class _BaseLayoutState extends State<BaseLayout> {
     return SafeArea(
         child: Scaffold(
       appBar: AppBarNavigator().getAppBar(
-          widget.title,
-          'https://s2-oglobo.glbimg.com/RxvRKNHvx9PhitTDbg8mkXp5P_E=/107x0:661x400/888x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_da025474c0c44edd99332dddb09cabe8/internal_photos/bs/2025/Q/U/UwAyNcR6AUDNDuoaVodg/divulgacao.png',
-          context, () {
-        if (currentTab.value != 3) {
-          currentTab.value = 3;
-          Navigator.push(context,
-              MaterialPageRoute(builder: (context) => const ProfileScreen()));
-        }
-      }),
+        widget.title,
+        'https://s2-oglobo.glbimg.com/RxvRKNHvx9PhitTDbg8mkXp5P_E=/107x0:661x400/888x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_da025474c0c44edd99332dddb09cabe8/internal_photos/bs/2025/Q/U/UwAyNcR6AUDNDuoaVodg/divulgacao.png',
+        context,
+        () {
+          if (currentTab.value != 3) {
+            currentTab.value = 3;
+            Navigator.pushReplacement(context,
+                MaterialPageRoute(builder: (context) => const ProfileScreen()));
+          }
+        },
+      ),
       body: widget.body,
       bottomNavigationBar: BottomBarNavigator()
           .getBottomBar(context, currentTab.watch(context), (tabIndex) {
         if (currentTab.value != tabIndex) {
           currentTab.value = tabIndex;
-          Navigator.push(
+          Navigator.pushReplacement(
               context,
               MaterialPageRoute(
                   builder: (context) => currentTab.value == 0
                       ? const HomeScreen()
-                      : currentTab.value == 2
-                          ? const DevicesScreen()
-                          : const ProfileScreen()));
+                      : currentTab.value == 1
+                          ? const ChatScreen()
+                          : currentTab.value == 2
+                              ? const DevicesScreen()
+                              : const ProfileScreen()));
         }
       }),
     ));

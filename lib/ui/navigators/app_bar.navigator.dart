@@ -2,8 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:gw_hub/ui/colors.dart';
 
 class AppBarNavigator {
-  AppBar getAppBar(String title, String profileImage, BuildContext context,
-      Function? onProfileTap) {
+  AppBar getAppBar(
+    String title,
+    String profileImage,
+    BuildContext context,
+    Function? onProfileTap,
+  ) {
     return AppBar(
       automaticallyImplyLeading: false,
       title: Row(
