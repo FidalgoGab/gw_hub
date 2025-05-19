@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:gw_hub/screens/home/home.screen.dart';
 import 'package:gw_hub/ui/colors.dart';
+import 'package:gw_hub/ui/layouts/base_layout.layout.dart';
 
 void main() {
   runApp(const MainApp());
@@ -35,10 +35,14 @@ class MainApp extends StatelessWidget {
               fontWeight: FontWeight.w500,
             ),
           ),
+          tabBarTheme: const TabBarTheme(dividerColor: Colors.transparent),
           bottomAppBarTheme: const BottomAppBarTheme(
-              color: widgetBackground, padding: EdgeInsets.all(0)),
+              elevation: 0,
+              shadowColor: Colors.transparent,
+              color: widgetBackground,
+              padding: EdgeInsets.all(0)),
         ),
-        home: HomeScreen() //const LoginScreen(),
+        home: BaseLayout() //const LoginScreen(),
         );
   }
 }

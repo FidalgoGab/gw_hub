@@ -9,6 +9,8 @@ class TextInputWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      minLines: 1,
+      maxLines: 4,
       decoration: InputDecoration(
         border: InputBorder.none,
         fillColor: secondaryWidgetBackground,
