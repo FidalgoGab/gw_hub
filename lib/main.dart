@@ -27,7 +27,7 @@ class MainApp extends StatelessWidget {
           ),
           appBarTheme: AppBarTheme(
             iconTheme: const IconThemeData(color: whiteTypography),
-            backgroundColor: redPrimary.withOpacity(0.8),
+            backgroundColor: redPrimary.withAlpha((255 * 0.8).toInt()),
             toolbarHeight: 76,
             titleTextStyle: const TextStyle(
               color: whiteTypography,
@@ -35,14 +35,14 @@ class MainApp extends StatelessWidget {
               fontWeight: FontWeight.w500,
             ),
           ),
-          tabBarTheme: const TabBarTheme(dividerColor: Colors.transparent),
-          bottomAppBarTheme: const BottomAppBarTheme(
+          tabBarTheme: const TabBarThemeData(dividerColor: Colors.transparent),
+          bottomAppBarTheme: const BottomAppBarThemeData(
               elevation: 0,
               shadowColor: Colors.transparent,
               color: widgetBackground,
               padding: EdgeInsets.all(0)),
         ),
-        home: BaseLayout() //const LoginScreen(),
+        home: const BaseLayout() //const LoginScreen(),
         );
   }
 }

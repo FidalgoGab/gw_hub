@@ -2,4 +2,4 @@
 
 GW Hub
 
-Using Flutter 3.22.0
+Using Flutter stable
