@@ -14,6 +14,7 @@ class ChatScreen extends StatefulWidget {
 }
 
 class _ChatScreenState extends State<ChatScreen> {
+  final _scrollController = ScrollController();
   final TextEditingController _controller = TextEditingController();
   final messages = signal<List<MessageModel>>([
     MessageModel(
@@ -26,15 +27,36 @@ class _ChatScreenState extends State<ChatScreen> {
       MessageModel(text: message, sentByMe: sentByMe),
     );
     messages.value = messagesCp;
+    await Future.delayed(Duration(milliseconds: 100));
+    _scrollToBottom();    _controller.clear();
     MessageModel answer = await ChatApi.getChatMessages(message);
     List<MessageModel> messagesCpAnswer = [...messages.value];
     messagesCpAnswer.add(answer);
     messages.value = messagesCpAnswer;
+    await Future.delayed(Duration(milliseconds: 200));
+    _scrollToBottom();
   }
 
   @override
   void initState() {
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
+  }
+
+  void _scrollToBottom() {
+    if(_scrollController.hasClients){
+      final position = _scrollController.position.maxScrollExtent;
+      _scrollController.animateTo(
+        position,
+        duration: Duration(milliseconds: 300),
+        curve: Curves.easeOut,
+      );
+    }
   }
 
   @override
@@ -73,7 +95,7 @@ class _ChatScreenState extends State<ChatScreen> {
               child: SizedBox(
                   width: MediaQuery.of(context).size.width,
                   child: SingleChildScrollView(
-                    controller: null,
+                    controller: _scrollController,
                     child: Padding(
                         padding: const EdgeInsets.only(
                             top: 24.0, left: 24.0, right: 24.0),
@@ -134,7 +156,6 @@ class _ChatScreenState extends State<ChatScreen> {
             onTap: () async {
               if (_controller.text.trim() != '') {
                 await getMessages(_controller.text.trim(), true);
-                _controller.clear();
               }
             },
             child: Container(
@@ -143,7 +164,8 @@ class _ChatScreenState extends State<ChatScreen> {
                   color: redPrimary, borderRadius: BorderRadius.circular(8)),
               child: Center(
                 child: Icon(
-                  _controller.text.trim() == '' ? Icons.mic : Icons.send,
+                  // _controller.text.trim() == '' ? Icons.mic :
+                   Icons.send,
                   color: whiteTypography,
                   size: 24,
                 ),
