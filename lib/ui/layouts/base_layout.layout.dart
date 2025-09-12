@@ -63,9 +63,21 @@ class _BaseLayoutState extends State<BaseLayout>
       ),
       body: TabBarView(
         controller: _tabController,
-        children: const [
-          HomeScreen(),
-          HomeScreen(),
+        children: [
+          HomeScreen(
+            changeTo: () {
+              setState(() {
+                _tabController.index = 2;
+              });
+            },
+          ),
+          HomeScreen(
+            changeTo: () {
+              setState(() {
+                _tabController.index = 2;
+              });
+            },
+          ),
           DevicesScreen(),
           ProfileScreen(),
         ],

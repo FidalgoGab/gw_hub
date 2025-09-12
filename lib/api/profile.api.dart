@@ -6,9 +6,9 @@ class ProfileApi {
 
     ProfileModel profile = const ProfileModel(
         image:
-            'https://s2-oglobo.glbimg.com/RxvRKNHvx9PhitTDbg8mkXp5P_E=/107x0:661x400/888x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_da025474c0c44edd99332dddb09cabe8/internal_photos/bs/2025/Q/U/UwAyNcR6AUDNDuoaVodg/divulgacao.png',
-        username: 'fidasgabriel',
-        email: 'fidsfids@gmail.com');
+            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTr3jhpAFYpzxx39DRuXIYxNPXc0zI5F6IiMQ&s',
+        username: 'Gabriel Fidalgo',
+        email: 'gabriel.fidalgo@gmail.com');
 
     return profile;
   }

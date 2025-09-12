@@ -1,21 +1,37 @@
 name: gw_hub
 description: "A new Flutter project."
-publish_to: 'none'
+publish_to: "none"
 version: 0.1.0
 
 environment:
-  sdk: '>=3.4.0 <4.0.0'
+  sdk: ">=3.4.0 <4.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
+  flutter_launcher_icons: ^0.14.4
   http: ^1.5.0
+  launcher_name: ^1.0.2
   signals: ^6.0.2
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^6.0.0
+  flutter_launcher_icons: ^0.14.4
+
+launcher_name:
+  default: "GW Hub"
+
+flutter_launcher_icons:
+  android: true
+  ios: true
+  adaptive_icon_foreground: "lib/ui/assets/gw_hub_icon_adapt.png"
+  adaptive_icon_foreground_inset: 0
+  adaptive_icon_background: "#ffffff"
+  image_path: "lib/ui/assets/gw_hub_icon.png"
 
 flutter:
   uses-material-design: true
+  assets:
+    - lib/ui/assets/

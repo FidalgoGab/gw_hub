@@ -5,7 +5,9 @@ import 'package:gw_hub/models/screen/home.model.dart';
 import 'package:gw_hub/ui/colors.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+  final Function? changeTo;
+
+  const HomeScreen({super.key, this.changeTo});
 
   @override
   Widget build(BuildContext context) {
@@ -65,7 +67,7 @@ class HomeScreen extends StatelessWidget {
                             padding: const EdgeInsets.all(24),
                             decoration: BoxDecoration(
                                 border: Border.all(
-                                    color: redPrimary.withOpacity(0.6),
+                                    color: redPrimary.withValues(alpha: 0.6),
                                     width: 2),
                                 borderRadius: BorderRadius.circular(8)),
                             child: Column(
@@ -112,56 +114,63 @@ class HomeScreen extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(horizontal: 12.0),
                     child: Column(
                       children: homeData.devices
-                          .map((device) => Container(
-                                padding: const EdgeInsets.symmetric(
-                                    vertical: 12, horizontal: 4),
-                                decoration: BoxDecoration(
-                                    color: widgetBackground,
-                                    border: Border(
-                                        bottom: BorderSide(
-                                            color:
-                                                blackSecondary.withOpacity(0.4),
-                                            width: 1))),
-                                margin: const EdgeInsets.only(bottom: 16),
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Expanded(
-                                      child: Text(
-                                        device.name,
-                                        maxLines: 1,
-                                        overflow: TextOverflow.ellipsis,
-                                        style: const TextStyle(
-                                            fontWeight: FontWeight.w500,
-                                            color: blackSecondary,
-                                            fontSize: 16),
-                                      ),
-                                    ),
-                                    Row(
-                                      children: [
-                                        Text(
-                                          device.active
-                                              ? '(Ligado)'
-                                              : '(Desligado)',
+                          .map((device) => InkWell(
+                                onTap: () {
+                                  if (changeTo != null) {
+                                    changeTo!();
+                                  }
+                                },
+                                child: Container(
+                                  padding: const EdgeInsets.symmetric(
+                                      vertical: 12, horizontal: 4),
+                                  decoration: BoxDecoration(
+                                      color: widgetBackground,
+                                      border: Border(
+                                          bottom: BorderSide(
+                                              color: blackSecondary.withValues(
+                                                  alpha: 0.4),
+                                              width: 1))),
+                                  margin: const EdgeInsets.only(bottom: 16),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Expanded(
+                                        child: Text(
+                                          device.name,
+                                          maxLines: 1,
+                                          overflow: TextOverflow.ellipsis,
                                           style: const TextStyle(
-                                              fontWeight: FontWeight.w300,
+                                              fontWeight: FontWeight.w500,
                                               color: blackSecondary,
-                                              fontSize: 12),
+                                              fontSize: 16),
                                         ),
-                                        const SizedBox(
-                                          width: 8,
-                                        ),
-                                        Icon(
-                                          device.active
-                                              ? Icons.offline_bolt_outlined
-                                              : Icons
-                                                  .portable_wifi_off_outlined,
-                                          color: blackSecondary,
-                                        ),
-                                      ],
-                                    )
-                                  ],
+                                      ),
+                                      Row(
+                                        children: [
+                                          Text(
+                                            device.active
+                                                ? '(Ligado)'
+                                                : '(Desligado)',
+                                            style: const TextStyle(
+                                                fontWeight: FontWeight.w300,
+                                                color: blackSecondary,
+                                                fontSize: 12),
+                                          ),
+                                          const SizedBox(
+                                            width: 8,
+                                          ),
+                                          Icon(
+                                            device.active
+                                                ? Icons.offline_bolt_outlined
+                                                : Icons
+                                                    .portable_wifi_off_outlined,
+                                            color: blackSecondary,
+                                          ),
+                                        ],
+                                      )
+                                    ],
+                                  ),
                                 ),
                               ))
                           .toList(),

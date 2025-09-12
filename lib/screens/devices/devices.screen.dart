@@ -51,14 +51,14 @@ class _DevicesScreenState extends State<DevicesScreen> {
                               color: blackTypography,
                               fontWeight: FontWeight.w300),
                         ),
-                        InkWell(
-                          onTap: () {},
-                          child: const Icon(
-                            Icons.add,
-                            size: 32,
-                            color: redPrimary,
-                          ),
-                        )
+                        // InkWell(
+                        //   onTap: () {},
+                        //   child: const Icon(
+                        //     Icons.add,
+                        //     size: 32,
+                        //     color: redPrimary,
+                        //   ),
+                        // )
                       ],
                     ),
                   ),
@@ -76,8 +76,9 @@ class _DevicesScreenState extends State<DevicesScreen> {
                                     color: widgetBackground,
                                     border: Border(
                                         bottom: BorderSide(
-                                            color:
-                                                blackSecondary.withOpacity(0.4),
+                                            color: blackSecondary.withValues(
+                                              alpha: 0.4,
+                                            ),
                                             width: 1))),
                                 margin: const EdgeInsets.only(bottom: 16),
                                 child: Row(
@@ -98,15 +99,15 @@ class _DevicesScreenState extends State<DevicesScreen> {
                                                 color: blackSecondary,
                                                 fontSize: 18),
                                           ),
-                                          Text(
-                                            device.id,
-                                            maxLines: 1,
-                                            overflow: TextOverflow.ellipsis,
-                                            style: const TextStyle(
-                                                fontWeight: FontWeight.w300,
-                                                color: blackSecondary,
-                                                fontSize: 12),
-                                          ),
+                                          // Text(
+                                          //   device.id,
+                                          //   maxLines: 1,
+                                          //   overflow: TextOverflow.ellipsis,
+                                          //   style: const TextStyle(
+                                          //       fontWeight: FontWeight.w300,
+                                          //       color: blackSecondary,
+                                          //       fontSize: 12),
+                                          // ),
                                         ],
                                       ),
                                     ),
@@ -124,13 +125,28 @@ class _DevicesScreenState extends State<DevicesScreen> {
                                         const SizedBox(
                                           width: 8,
                                         ),
-                                        Icon(
-                                          device.active
-                                              ? Icons.offline_bolt_outlined
-                                              : Icons
-                                                  .portable_wifi_off_outlined,
-                                          color: blackSecondary,
-                                          size: 28,
+                                        InkWell(
+                                          onTap: () async {
+                                            try {
+                                              await DevicesApi
+                                                  .toggleDeviceStatus(device);
+
+                                              var result = await DevicesApi
+                                                  .getDevicesList();
+
+                                              setState(() {
+                                                devicesData = result;
+                                              });
+                                            } catch (e) {}
+                                          },
+                                          child: Icon(
+                                            device.active
+                                                ? Icons.offline_bolt_outlined
+                                                : Icons
+                                                    .portable_wifi_off_outlined,
+                                            color: blackSecondary,
+                                            size: 28,
+                                          ),
                                         ),
                                       ],
                                     )
