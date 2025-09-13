@@ -47,15 +47,17 @@ class _BaseLayoutState extends State<BaseLayout>
                 decoration: BoxDecoration(
                     borderRadius: const BorderRadius.all(Radius.circular(50)),
                     border: Border.all(color: whiteTypography)),
-                child: ClipRRect(
-                  borderRadius: const BorderRadius.all(Radius.circular(50)),
-                  child: Image.network(
-                    'https://s2-oglobo.glbimg.com/RxvRKNHvx9PhitTDbg8mkXp5P_E=/107x0:661x400/888x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_da025474c0c44edd99332dddb09cabe8/internal_photos/bs/2025/Q/U/UwAyNcR6AUDNDuoaVodg/divulgacao.png',
-                    width: 45,
-                    height: 45,
-                    fit: BoxFit.cover,
-                  ),
-                ),
+                    child:  Icon(Icons.person, size: 38,),
+                // child: ClipRRect(
+                //   borderRadius: const BorderRadius.all(Radius.circular(50)),
+                //   child:,
+                //   // child: Image.network(
+                //   //   'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTr3jhpAFYpzxx39DRuXIYxNPXc0zI5F6IiMQ&s',
+                //   //   width: 45,
+                //   //   height: 45,
+                //   //   fit: BoxFit.cover,
+                //   // ),
+                // ),
               ),
             )
           ],
@@ -71,12 +73,8 @@ class _BaseLayoutState extends State<BaseLayout>
               });
             },
           ),
-          HomeScreen(
-            changeTo: () {
-              setState(() {
-                _tabController.index = 2;
-              });
-            },
+          ChatScreen(
+            hasAction: false,
           ),
           DevicesScreen(),
           ProfileScreen(),

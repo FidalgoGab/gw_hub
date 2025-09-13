@@ -59,16 +59,17 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           borderRadius:
                               const BorderRadius.all(Radius.circular(200)),
                           border: Border.all(color: blackSecondary)),
-                      child: ClipRRect(
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(200)),
-                        child: Image.network(
-                          profileData.image,
-                          width: MediaQuery.of(context).size.width * 0.5,
-                          height: MediaQuery.of(context).size.width * 0.5,
-                          fit: BoxFit.cover,
-                        ),
-                      ),
+                          child:  Icon(Icons.person, size: 148,),
+                      // child: ClipRRect(
+                      //   borderRadius:
+                      //       const BorderRadius.all(Radius.circular(200)),
+                      //   child: Image.network(
+                      //     profileData.image,
+                      //     width: MediaQuery.of(context).size.width * 0.5,
+                      //     height: MediaQuery.of(context).size.width * 0.5,
+                      //     fit: BoxFit.cover,
+                      //   ),
+                      // ),
                     ),
                   ),
                   const SizedBox(

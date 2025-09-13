@@ -7,7 +7,9 @@ import 'package:gw_hub/ui/widgets/text_input.widget.dart';
 import 'package:signals/signals_flutter.dart';
 
 class ChatScreen extends StatefulWidget {
-  const ChatScreen({super.key});
+  final bool hasAction;
+
+  const ChatScreen({super.key, this.hasAction = true});
 
   @override
   State<StatefulWidget> createState() => _ChatScreenState();
@@ -62,13 +64,15 @@ class _ChatScreenState extends State<ChatScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
+      appBar: !widget.hasAction ? null: AppBar(
         automaticallyImplyLeading: false,
         title: Row(
           children: [
             InkWell(
               onTap: () {
-                Navigator.pop(context);
+                if(widget.hasAction) {
+                  Navigator.pop(context);
+                }
               },
               child: const Icon(
                 Icons.arrow_back_ios_outlined,
